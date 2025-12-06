@@ -1,0 +1,100 @@
+/* ============================
+   WRAPPER UTAMA – TENGAH HALAMAN
+===============================*/
+.profile-wrapper {
+    width: 70%;
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================
+   TITLE
+===============================*/
+.profile-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* ============================
+   FOTO + DATA (2 KOLOM)
+===============================*/
+.profile-flex {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+/* FOTO */
+.profile-photo img {
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 3px solid #f3b3d6; /* Pink soft */
+}
+
+/* DATA */
+.profile-data p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+/* ============================
+   TOMBOL
+===============================*/
+.profile-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* Tombol Pink (Edit) */
+.btn-pink {
+    background: #ff7ebd;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.btn-pink:hover {
+    background: #ff58ab;
+    transform: scale(1.05);
+}
+
+/* Tombol Biru (Kembali) */
+.btn-blue {
+    background: #4ea5ff;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.btn-blue:hover {
+    background: #1e8bff;
+    transform: scale(1.05);
+}
+
+/* ============================
+   RESPONSIVE
+===============================*/
+@media (max-width: 768px) {
+    .profile-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+}

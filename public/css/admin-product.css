@@ -1,0 +1,87 @@
+.product-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Judul */
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* Wrapper Tombol + Tambah */
+.add-btn-wrapper {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+/* Tombol Tambah */
+.btn-tambah {
+    background: #ff7ca8;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    display: inline-block;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.btn-tambah:hover {
+    background: #ff5f92;
+}
+
+/* Table */
+.table-produk {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table-produk th,
+.table-produk td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Aksi: Tombol rapi sejajar */
+.aksi-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Tombol Aksi (ukuran sama) */
+.btn-ubah,
+.btn-hapus {
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    min-width: 90px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+/* Tombol ubah */
+.btn-ubah {
+    background: #ea7ea3;
+    color: #333;
+}
+.btn-ubah:hover {
+    background: #ffb7d2;
+}
+
+/* Tombol hapus */
+.btn-hapus {
+    background: #c1282a;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.btn-hapus:hover {
+    background: #ff6c91;
+}

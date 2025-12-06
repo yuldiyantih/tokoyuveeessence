@@ -1,0 +1,72 @@
+.admin-wrapper {
+    min-height: 100vh;
+}
+.sidebar {
+    width: 240px;
+    background: #22242a;
+    color: #fff;
+    padding: 20px;
+    min-height: 100vh;
+}
+.sidebar .brand {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.sidebar .brand .logo {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+}
+.sidebar .menu li {
+    margin: 12px 0;
+}
+.sidebar .menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+.sidebar .menu li.active a,
+.sidebar .menu li a:hover {
+    background: #ff8fb1;
+    color: #222;
+    font-weight: 600;
+}
+.content {
+    background: #f8f7fb;
+    min-height: 100vh;
+}
+.product-card {
+    background: #fff0f4;
+    border-radius: 10px;
+}
+.product-card img {
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+.price {
+    color: #ff8fb1;
+    text-align: right;
+    font-weight: 600;
+}
+/*usera admin*/
+.btn-pink {
+    background: #ff8fb1;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+}
+.btn-pink:hover {
+    background: #ff76a4;
+    color: #fff;
+}

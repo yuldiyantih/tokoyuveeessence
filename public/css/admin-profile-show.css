@@ -1,0 +1,83 @@
+.profile-view-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.profile-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.profile-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 18px;
+    display: flex;
+    gap: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.photo-circle img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.profile-right {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    margin-bottom: 12px;
+}
+
+.info-item label {
+    font-size: 15px;
+    color: #777;
+    display: block;
+}
+
+.info-item p {
+    font-size: 16px;
+    margin: 2px 0 10px;
+    font-weight: 500;
+}
+
+.button-area {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-back,
+.btn-edit {
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-back {
+    border: 2px solid #bfc3ca;
+    color: #444;
+    background: #fff;
+}
+
+.btn-edit {
+    background: #3e7bfa;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background: #2f67e0;
+}
