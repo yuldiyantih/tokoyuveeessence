@@ -8,17 +8,41 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingProfileController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\FrontendProductController;
+use App\Http\Controllers\CheckoutController;
 
-/*
-|--------------------------------------------------------------------------
-| Redirect halaman utama → login admin
-|--------------------------------------------------------------------------
-*/
+Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+// Tambahan URL /home (opsional)
+Route::get('/home', [PageController::class, 'home'])->name('home.redirect');
 
+// Halaman tentang
+Route::get('/tentang', [PageController::class, 'tentang'])->name('tentang');
+
+// Halaman kontak
+Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
+
+// Halaman about us
+Route::get('/aboutus', [PageController::class, 'aboutus'])->name('aboutus');
+
+// Halaman kebijakan-privasi
+Route::get('/kebijakan-privasi', [PageController::class, 'kebijakanPrivasi'])->name('kebijakan');
+
+// Halaman syarat-ketentuan
+Route::get('/syarat-ketentuan', [PageController::class, 'syaratKetentuan'])->name('syarat');
+
+// Checkout
+Route::get('/checkout/{id}', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout/process/{id}', [CheckoutController::class, 'process'])->name('checkout.process');
+
+
+// ============= halaman produk frontend=============
+// Halaman daftar produk
+Route::get('/produk', [FrontendProductController::class, 'index'])->name('produk.index');
+
+// Halaman detail produk
+Route::get('/produk/{id}', [FrontendProductController::class, 'show'])->name('produk.show');
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +56,7 @@ Route::post('/login', [AdminController::class, 'authenticate'])->name('login.pro
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN AREA (HARUS LOGIN ADMIN)
+| ADMIN AREA (HARUS LOGIN ADMIN) BACKEND
 |--------------------------------------------------------------------------
 */
 

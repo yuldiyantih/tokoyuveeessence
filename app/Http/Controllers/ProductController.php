@@ -24,36 +24,34 @@ class ProductController extends Controller
      */
     public function store(Request $r)
     {
-        // 1. Validasi data
+
         $data = $r->validate([
             'name'        => 'required|string|max:255',
             'price'       => 'required|numeric',
             'stock'       => 'required|integer',
             'description' => 'nullable|string',
-            'image'       => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image'       => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // 2. Cek dan simpan file jika ada
         if ($r->hasFile('image')) {
 
-            // Ambil file yang diupload
             $file = $r->file('image');
-
-            // Ambil NAMA ASLI file
             $originalName = $file->getClientOriginalName();
 
-            // Simpan file dengan nama aslinya ke folder 'products'
-            $filePath = $file->storeAs('products', $originalName, 'public');
+            // Jika file dengan nama sama sudah ada → rename otomatis
+            $finalName = time() . '-' . $originalName;
 
-            // Tambahkan path gambar ke array $data
+            $filePath = $file->storeAs('products', $finalName, 'public');
+
             $data['image'] = $filePath;
         }
 
-        // 3. Simpan semua data ke database
         Product::create($data);
 
-        return redirect()->route('admin.products.index')->with('success', 'Produk ditambahkan');
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Produk ditambahkan');
     }
+
 
     public function edit(Product $product)
     {
@@ -62,32 +60,38 @@ class ProductController extends Controller
 
     public function update(Request $r, Product $product)
     {
-        // 1. Validasi data (gambar tidak wajib diubah)
         $data = $r->validate([
             'name'        => 'required|string|max:255',
             'price'       => 'required|numeric',
             'stock'       => 'required|integer',
             'description' => 'nullable|string',
-            // Gambar opsional saat update
-            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // 2. Cek apakah ada gambar baru yang diupload
         if ($r->hasFile('image')) {
+
             // Hapus gambar lama jika ada
-            if ($product->image) {
-                Storage::delete('public/' . $product->image);
+            if ($product->image && Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
             }
-            // Simpan gambar baru
-            $file = $r->file('image')->store('products', 'public');
-            $data['image'] = $file;
+
+            $file = $r->file('image');
+            $originalName = $file->getClientOriginalName();
+
+            // Rename untuk mencegah bentrok
+            $finalName = time() . '-' . $originalName;
+
+            $filePath = $file->storeAs('products', $finalName, 'public');
+
+            $data['image'] = $filePath;
         }
 
-        // 3. Update data produk
         $product->update($data);
 
-        return redirect()->route('admin.products.index')->with('success', 'Produk diperbarui');
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Produk diperbarui');
     }
+
 
     public function destroy(Product $product)
     {

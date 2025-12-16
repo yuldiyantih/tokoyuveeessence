@@ -1,0 +1,131 @@
+/* SECTION HERO PRODUK */
+.produk-hero {
+    background: linear-gradient(180deg, #d38c92 0%, #f3b4bc 40%, #ffe6ec 100%);
+    border-radius: 20px;
+    padding: 60px 100px;
+    width: 94%;
+    margin: 40px auto;
+    box-shadow: 0 10px 40px rgba(242, 128, 138, 0.25),
+        inset 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-text h1 {
+    color: #a61b2b;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.hero-image img {
+    width: 340px;
+    border-radius: 20px;
+}
+
+/* GRID PRODUK */
+.produk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    padding: 80px 100px;
+    width: 94%;
+    margin: 0 auto 80px auto;
+    background: linear-gradient(180deg, #ffe6ec 0%, #f3b4bc 40%, #d38c92 100%);
+    border-radius: 20px;
+    box-shadow: 0 0 80px rgba(211, 140, 146, 0.2),
+        inset 0 0 60px rgba(255, 255, 255, 0.4);
+
+    /* ✅ Tambahan agar presisi kiri-kanan */
+    justify-items: center;
+    align-items: stretch;
+}
+
+/* CARD PRODUK */
+.product-card {
+    background: linear-gradient(180deg, #f9c4d2 0%, #fddde3 100%);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(255, 150, 170, 0.3);
+    transition: all 0.3s ease;
+
+    /* ✅ Tambahan agar konten di dalam card sejajar dan presisi */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(255, 100, 130, 0.4);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    color: #81202a;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.product-card p {
+    color: #5b1a1a;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+/* BUTTON VIEW MORE */
+.view-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #a61b2b, #d6455d);
+    color: #fff;
+    padding: 10px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 6px 18px rgba(166, 27, 43, 0.3);
+    position: relative;
+    overflow: hidden;
+
+    /* ✅ Tambahan agar tombol benar-benar di tengah */
+    margin: 0 auto;
+}
+
+.view-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(166, 27, 43, 0.5);
+}
+
+.view-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: all 0.6s ease;
+}
+
+.view-btn:hover::after {
+    left: 100%;
+}

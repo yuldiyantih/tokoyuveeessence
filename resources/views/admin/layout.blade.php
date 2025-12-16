@@ -1,67 +1,70 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Yuvee Essence</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin-users.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin-product.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin-profile.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/feather-icons"></script>
+<link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin-users.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin-product.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin-profile.css') }}">
 
-    <style>
-        .sidebar {
-            width: 250px;
-            background: #222;
-            color: white;
-            min-height: 100vh;
-            padding: 20px;
-        }
+@stack('css')
 
-        .sidebar .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+<style>
+    .sidebar {
+        width: 250px;
+        background: #222;
+        color: white;
+        min-height: 100vh;
+        padding: 20px;
+    }
 
-        .sidebar .brand img {
-            width: 40px;
-            height: 40px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+    .sidebar .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-        .sidebar .menu li {
-            list-style: none;
-            margin-bottom: 10px;
-        }
+    .sidebar .brand img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
 
-        .sidebar a {
-            text-decoration: none !important;
-            color: white !important;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            border-radius: 8px;
-            transition: 0.2s;
-        }
+    .sidebar .menu li {
+        list-style: none;
+        margin-bottom: 10px;
+    }
 
-        .sidebar li.active a,
-        .sidebar a:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
+    .sidebar a {
+        text-decoration: none !important;
+        color: white !important;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 8px;
+        transition: 0.2s;
+    }
 
-        .topbar {
-            background: #fff;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-    </style>
+    .sidebar li.active a,
+    .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .topbar {
+        background: #fff;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .sidebar svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+</style>
 </head>
 
 <body>
@@ -136,12 +139,19 @@
         </main>
 
     </div>
+    <script src="https://unpkg.com/feather-icons"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             feather.replace();
         });
     </script>
+
+</body>
+
+</html>
+
+</script>
 
 </body>
 

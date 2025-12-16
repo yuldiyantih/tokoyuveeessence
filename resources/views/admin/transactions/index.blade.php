@@ -47,7 +47,7 @@
             <tbody>
                 @forelse ($transactions as $transaction)
                 <tr>
-                    <td>{{ $transactions->firstItem() + $loop->index }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $transaction->name }}</td>
                     <td>{{ $transaction->product_name }}</td>
                     <td>{{ $transaction->quantity }}</td>
@@ -77,7 +77,7 @@
 
     <!-- Pagination Links -->
     <div class="d-flex justify-content-center">
-        {{ $transactions->links() }}
+
     </div>
 </div>
 @endsection

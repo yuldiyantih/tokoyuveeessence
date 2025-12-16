@@ -34,7 +34,7 @@ class UserController extends Controller
             'role'     => 'required',
         ]);
 
-        // ⛔ TANPA HASH → LANGSUNG SIMPAN
+        // TANPA HASH → LANGSUNG SIMPAN
         $data['password'] = Hash::make($request->password);
 
         User::create($data);

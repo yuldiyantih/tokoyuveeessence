@@ -25,15 +25,32 @@ class TransactionController extends Controller
 
         // Logika Filter Tanggal
         if ($request->filled('start_date')) {
-            $query->whereDate('created_at', '>=', $request->input('start_date'));
+            // $transactions = $query->get()->where('created_at', '>=', $request->input('start_date'), 'Y-m-d');
+            // dd($transaction);
+            if ($request->filled('end_date')) {
+                // dd($query->get()->where('created_at', '<=', $request->input('end_date'), 'Y-m-d'));
+                // dd($request->input('end_date'));
+                $transactions = $query->get()->where('created_at', '>=', $request->input('start_date'), 'Y-m-d')->where('created_at', '<=', $request->input('end_date'), 'Y-m-d');
+            } else {
+                $transactions = $query->get()->where('created_at', '>=', $request->input('start_date'), 'Y-m-d');
+            }
+        } else {
+            if ($request->filled('end_date')) {
+
+                $transactions = $query->get()->where('created_at', '<=', $request->input('end_date'), 'Y-m-d');
+            } else {
+                // Urutkan dari yang terbaru dan paginasi hasilnya (10 data per halaman)
+                $transactions = $query->orderBy('created_at', 'desc')->paginate(10);
+            }
         }
 
-        if ($request->filled('end_date')) {
-            $query->whereDate('created_at', '<=', $request->input('end_date'));
-        }
+
+
+        //dd($query->whereDate('created_at', '<=', $request->input('end_date')))->toSql();
 
         // Urutkan dari yang terbaru dan paginasi hasilnya (10 data per halaman)
-        $transactions = $query->orderBy('created_at', 'desc')->paginate(10);
+        // $transactions = $query->orderBy('created_at', 'desc')->paginate(10);
+        // dd($transactions);
 
         // Kembalikan view dengan data transaksi
         // PASTIKAN BARIS INI SESUAI DENGAN STRUKTUR FOLDER ANDA
@@ -43,9 +60,10 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaction $transaction)
+
+    public function show($id)
     {
-        // Anda bisa membuat view baru untuk ini, misalnya 'admin.transactions.show'
+        $transaction = Transaction::findOrFail($id);
         return view('admin.transactions.show', compact('transaction'));
     }
 }

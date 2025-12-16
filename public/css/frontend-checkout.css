@@ -1,0 +1,158 @@
+/* =========================================
+   GENERAL STYLE
+========================================= */
+.checkout-page {
+    padding: 50px 0;
+    background: #fff0f7;
+    font-family: "Poppins", sans-serif;
+}
+
+.checkout-page h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #d6336c;
+    margin-bottom: 40px;
+}
+
+/* =========================================
+   CONTAINER UTAMA (GAMBAR KIRI, FORM KANAN)
+========================================= */
+.checkout-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.15);
+    align-items: flex-start;
+}
+
+/* =========================================
+   PRODUK KIRI
+========================================= */
+.checkout-product {
+    flex: 0.7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 30px;
+    border-right: 2px solid #ffd2e8;
+}
+
+/* Gambar produk kecil */
+.checkout-product img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.25);
+}
+
+/* Detail produk */
+.checkout-product h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #d6336c;
+    margin-bottom: 10px;
+}
+
+.checkout-product p {
+    font-size: 16px;
+    color: #444;
+    margin: 4px 0;
+}
+
+.checkout-product .total {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #b32457;
+    font-weight: 700;
+}
+
+/* =========================================
+   FORM KANAN
+========================================= */
+.checkout-form {
+    flex: 1.3;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-form label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #b32457;
+    margin-top: 12px;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 2px solid #ffc2dd;
+    background: #fff6fa;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+    border-color: #ff73b3;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.3);
+}
+
+.checkout-form textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+/* Tombol submit */
+.btn-submit {
+    margin-top: 25px;
+    padding: 14px;
+    background: linear-gradient(135deg, #ff78b8, #ff4f9a);
+    color: white;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #ff4f9a, #e03174);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 900px) {
+    .checkout-container {
+        flex-direction: column;
+        padding: 25px;
+    }
+
+    .checkout-product {
+        border-right: none;
+        border-bottom: 2px solid #ffd2e8;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .checkout-product img {
+        width: 130px;
+        height: 130px;
+    }
+}

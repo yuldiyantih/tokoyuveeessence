@@ -1,0 +1,68 @@
+/* ===========================================================
+                     TENTANG SECTION 
+   =========================================================== */
+
+.tentang-section {
+    background: linear-gradient(180deg, #d38c92 0%, #f3b4bc 40%, #ffe6ec 100%);
+    border-radius: 20px;
+    padding: 50px 90px;
+    width: 94%;
+    margin: 35px auto;
+    box-shadow: 0 8px 35px rgba(242, 128, 138, 0.25),
+        inset 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+.tentang-section h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 27px;
+    color: #780b0d;
+    margin-bottom: 20px;
+}
+
+.tentang-section p {
+    text-align: justify;
+    line-height: 1.8;
+    color: #780b0d;
+    margin-bottom: 14px;
+    font-size: 17px; /* UKURAN FONT*/
+}
+
+/* Bagian Koleksi Unggulan Kami dan daftarnya */
+.tentang-section p strong,
+.tentang-section ul,
+.tentang-section li {
+    color: #9a0002;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+.tentang-section ul {
+    margin-left: 30px;
+    list-style-type: disc;
+}
+
+.tentang-section .highlight {
+    color: #780b0d;
+    font-weight: 600;
+    margin-top: 18px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.tentang-section .quote {
+    text-align: center;
+    margin-top: 28px;
+    font-style: italic;
+    color: #780b0d;
+    font-weight: 600;
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+.tentang-section:hover {
+    box-shadow: 0 10px 40px rgba(242, 128, 138, 0.3),
+        inset 0 0 35px rgba(255, 255, 255, 0.35);
+    transition: 0.4s ease;
+}

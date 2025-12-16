@@ -3,7 +3,9 @@
 ========================================== */
 body {
     font-family: "Poppins", sans-serif;
-    background: #f9e1ea; /* Pink soft */
+    background: #f9e1ea;
+    margin: 0;
+    padding: 0;
 }
 
 /* Wrapper */
@@ -12,163 +14,154 @@ body {
 }
 
 .dashboard-title {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 600;
     color: #d94f8b;
 }
 
 .subtitle {
-    margin-top: -8px;
+    margin-top: -6px;
     color: #777;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* ==========================================
    CARD STATISTIK
 ========================================== */
 .dashboard-grid {
-    margin-top: 25px;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    gap: 16px;
 }
 
 .dash-card {
     background: #fff;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     text-align: center;
     transition: 0.2s;
 }
 
-.dash-card:hover {
-    transform: translateY(-3px);
-}
-
 .dash-card h4 {
-    font-size: 16px;
-    color: #555;
+    font-size: 14px;
 }
 
 .dash-card .value {
-    margin-top: 5px;
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 700;
     color: #d94f8b;
 }
 
 /* ==========================================
-   PRODUK TERBARU
+   SECTION TITLE
 ========================================== */
 .section-title {
-    margin-top: 35px;
-    margin-bottom: 10px;
-    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 8px;
+    font-size: 18px;
     font-weight: 600;
     color: #d94f8b;
 }
 
-.product-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
+/* ==========================================
+   PRODUCT CARD (KECIL & PADAT)
+========================================== */
 .product-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 15px;
+    background: #ffeef3;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: 0.25s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    transition: 0.2s;
+    box-sizing: border-box;
 }
 
 .product-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 }
 
-.img-box {
+/* ==========================================
+   IMAGE CONTAINER (DIPERKECIL)
+========================================== */
+.product-img {
     width: 100%;
-    height: 140px;
-    border-radius: 12px;
-    background: #ffe4ef;
+    height: 90px; /* KUNCI KECIL */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border-radius: 10px;
+    background: #ffe4ef;
+    flex-shrink: 0;
 }
 
-.img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Gambar aman */
+.product-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
-.product-card h5 {
-    margin-top: 10px;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.price {
-    color: #d94f8b;
-    font-weight: 500;
-    margin-top: 3px;
-}
-
-/* ====== HEADER ====== */
-.dashboard-header h4 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #d94f8b;
-    margin-bottom: 15px;
-}
-
-/* ====== GRID PRODUK ====== */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-    padding-right: 20px;
-}
-
-.product-card {
-    background: #ffeef3;
-    padding: 15px;
-    border-radius: 15px;
+/* ==========================================
+   PRODUCT INFO (KECIL)
+========================================== */
+.product-info {
+    margin-top: 6px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-}
-
-.product-img {
-    width: 100%;
-    height: 155px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.product-img img {
-    height: 100%;
-    object-fit: contain;
-}
-
-/* ====== INFO ====== */
-.product-info {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
+    gap: 2px;
 }
 
 .product-info .name {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 11px;
+    line-height: 1.2;
 }
 
 .product-info .price {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 11px;
     color: #d94f8b;
+}
+
+/* ==========================================
+   GRID PRODUK (8 KOLOM DESKTOP)
+========================================== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* TARGET 8 PRODUK */
+    gap: 12px;
+    padding-right: 0;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+@media (max-width: 1400px) {
+    .product-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
