@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         // Ambil semua user KEUALI yang role-nya 'manager'
-        $users = User::where('role', '!=', 'manager')->paginate(10);
+        $users = User::where('role', '!=', 'manager')->paginate(20);
 
         return view('admin.users.index', compact('users'));
     }
@@ -37,7 +37,7 @@ class UserController extends Controller
         // TANPA HASH → LANGSUNG SIMPAN
         $data['password'] = Hash::make($request->password);
 
-        User::create($data);
+        $user = User::create($data);
 
         return redirect()
             ->route('admin.users.index')

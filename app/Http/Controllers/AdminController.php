@@ -19,52 +19,48 @@ class AdminController extends Controller
         return view('admin.auth.login');
     }
 
-
     /**
-     * PROSES LOGIN (TANPA HASH)
+     * PROSES LOGIN ADMIN
      */
     public function authenticate(Request $request)
     {
-        // Validasi input
+        // Validasi input (backend safety)
         $request->validate([
             'email'    => 'required|email',
             'password' => 'required'
         ]);
 
-        // Cek user berdasarkan email
+        // Cari user berdasarkan email
         $user = User::where('email', $request->email)->first();
 
-        if (!$user) {
-            return back()->with('error', 'Email tidak ditemukan.');
+        // Jika email tidak ditemukan ATAU password salah
+        if (
+            !$user ||
+            !Hash::check($request->password, $user->password)
+        ) {
+            return back()->with('login_error', 'Login failed. Invalid email or password.');
         }
 
-        // Cek password biasa (TANPA bcrypt)
-        if (!(Hash::check($request->password, $user->password))) {
-            return back()->with('error', 'Password salah.');
+        // Jika bukan admin
+        if ($user->role === 'customer') {
+            return back()->with('login_error', 'Access denied. Admin only.');
         }
 
-        // Cek apakah role admin
-        if ($user->role == 'customer') {
-            return back()->with('error', 'Akses ditolak. Anda bukan admin.');
-        }
-
-        // Login manual
+        // Login user
         Auth::login($user);
-        // dd(Auth::user());
 
         return redirect()->route('admin.dashboard');
     }
-
 
     /**
      * DASHBOARD ADMIN
      */
     public function index()
     {
-        $products            = Product::latest()->take(8)->get();
-        $usersCount          = User::count();
-        $transactionsCount   = Transaction::count();
-        $transactionsLatest  = Transaction::latest()->take(5)->get();
+        $products           = Product::latest()->take(20)->get();
+        $usersCount         = User::count();
+        $transactionsCount  = Transaction::count();
+        $transactionsLatest = Transaction::latest()->take(10)->get();
 
         return view('admin.dashboard', compact(
             'products',
@@ -73,7 +69,6 @@ class AdminController extends Controller
             'transactionsLatest'
         ));
     }
-
 
     /**
      * LOGOUT ADMIN

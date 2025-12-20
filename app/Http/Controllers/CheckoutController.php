@@ -22,9 +22,8 @@ class CheckoutController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Simpan transaksi sesuai tabel kamu
         Transaction::create([
-            'user_id'      => null, // atau Auth::id() jika user login
+            'user_id'      => null,
             'name'         => $request->customer_name,
             'phone'        => $request->customer_phone,
             'address'      => $request->customer_address,
@@ -32,8 +31,9 @@ class CheckoutController extends Controller
             'quantity'     => $request->quantity,
             'email'        => $request->customer_email,
             'total'        => $product->price * $request->quantity,
-            'status'       => 'terkirim',
+            'status'       => 'proses', // ✅ HARUS PROSES
         ]);
+
 
         return redirect()->route('home')->with('success', 'Pesanan berhasil dibuat!');
     }

@@ -8,18 +8,20 @@
 
 @section('content')
 <div class="container my-4">
-
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
 
-            <div class="card rt-card">
+            <!-- CARD UTAMA -->
+            <div class="rt-card">
 
+                <!-- HEADER -->
                 <div class="rt-card-header">
                     Detail Transaksi
                 </div>
 
-                <div class="card-body p-0">
-                    <table class="table rt-table mb-0">
+                <!-- BODY TABEL -->
+                <div class="rt-card-body">
+                    <table class="rt-table mb-0">
                         <tbody>
                             <tr>
                                 <th>ID Transaksi</th>
@@ -66,28 +68,38 @@
                             <tr>
                                 <th>Status</th>
                                 <td>
-                                    <span class="rt-status">
-                                        {{ $transaction->status ? ucfirst($transaction->status) : '-' }}
+                                    @if ($transaction->status === 'proses')
+                                    <a href="{{ route('admin.transactions.proses', $transaction->id) }}" class="rt-status">
+                                        Dalam Proses
+                                    </a>
+                                    @elseif ($transaction->status === 'terkirim')
+                                    <a href="{{ route('admin.transactions.terkirim', $transaction->id) }}" class="rt-status">
+                                        Terkirim
+                                    </a>
+                                    @else
+                                    <span class="rt-status" style="background-color: #6c757d;">
+                                        {{ ucfirst($transaction->status) }}
                                     </span>
+                                    @endif
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="card-footer text-end">
-                    <a href="{{ route('admin.transactions.index') }}" class="btn rt-btn-back">
+                <!-- FOOTER TOMBOL -->
+                <div class="rt-card-footer d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.transactions.printSingle', $transaction->id) }}" target="_blank" class="rt-btn-print">
+                        Cetak
+                    </a>
+                    <a href="{{ route('admin.transactions.index') }}" class="rt-btn-back">
                         Kembali
                     </a>
                 </div>
 
-                </a>
             </div>
 
         </div>
-
     </div>
-</div>
-
 </div>
 @endsection

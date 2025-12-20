@@ -1,167 +1,98 @@
-/* ==========================================
+/* =====================================================
    GLOBAL
-========================================== */
+===================================================== */
 body {
     font-family: "Poppins", sans-serif;
-    background: #f9e1ea;
+    background: #f6e9ec;
     margin: 0;
     padding: 0;
 }
 
-/* Wrapper */
-.dashboard-wrapper {
-    padding: 20px 10px;
-}
-
-.dashboard-title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #d94f8b;
-}
-
-.subtitle {
-    margin-top: -6px;
-    color: #777;
-    font-size: 13px;
-}
-
-/* ==========================================
-   CARD STATISTIK
-========================================== */
-.dashboard-grid {
-    margin-top: 20px;
+/* =====================================================
+   GRID PRODUK (4 KOLOM)
+===================================================== */
+.product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr); /* FIX 4 PRODUK */
+    gap: 24px;
+    margin-top: 20px;
 }
 
-.dash-card {
-    background: #fff;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    text-align: center;
-    transition: 0.2s;
-}
-
-.dash-card h4 {
-    font-size: 14px;
-}
-
-.dash-card .value {
-    font-size: 26px;
-    font-weight: 700;
-    color: #d94f8b;
-}
-
-/* ==========================================
-   SECTION TITLE
-========================================== */
-.section-title {
-    margin-top: 30px;
-    margin-bottom: 8px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #d94f8b;
-}
-
-/* ==========================================
-   PRODUCT CARD (KECIL & PADAT)
-========================================== */
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
 .product-card {
-    background: #ffeef3;
-    padding: 10px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 18px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-    transition: 0.2s;
-    box-sizing: border-box;
+    box-shadow: 0 10px 25px rgba(91, 15, 31, 0.12);
+    transition: 0.25s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-6px);
 }
 
-/* ==========================================
-   IMAGE CONTAINER (DIPERKECIL)
-========================================== */
+/* =====================================================
+   IMAGE CONTAINER (BESAR & RAPiH)
+===================================================== */
 .product-img {
     width: 100%;
-    height: 90px; /* KUNCI KECIL */
+    height: 220px; /* FOTO DIPERBESAR */
+    background: #5b0f1f; /* DARK MAROON */
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    border-radius: 10px;
-    background: #ffe4ef;
-    flex-shrink: 0;
+    margin-bottom: 14px;
 }
 
-/* Gambar aman */
-.product-card img {
-    max-width: 100%;
-    max-height: 100%;
+/* GAMBAR */
+.product-img img {
+    max-width: 85%;
+    max-height: 85%;
     object-fit: contain;
-    display: block;
 }
 
-/* ==========================================
-   PRODUCT INFO (KECIL)
-========================================== */
+/* =====================================================
+   PRODUCT INFO
+===================================================== */
 .product-info {
-    margin-top: 6px;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 6px;
 }
 
 .product-info .name {
+    font-size: 15px;
     font-weight: 600;
-    font-size: 11px;
-    line-height: 1.2;
+    color: #3f0b16;
 }
 
 .product-info .price {
-    font-weight: 600;
-    font-size: 11px;
-    color: #d94f8b;
+    font-size: 14px;
+    font-weight: 700;
+    color: #8b1e3f;
 }
 
-/* ==========================================
-   GRID PRODUK (8 KOLOM DESKTOP)
-========================================== */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr); /* TARGET 8 PRODUK */
-    gap: 12px;
-    padding-right: 0;
-}
-
-/* ==========================================
+/* =====================================================
    RESPONSIVE
-========================================== */
-@media (max-width: 1400px) {
-    .product-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
-}
-
+===================================================== */
 @media (max-width: 1200px) {
     .product-grid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 992px) {
     .product-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 576px) {
     .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 }

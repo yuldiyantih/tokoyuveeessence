@@ -69,8 +69,35 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
     Route::resource('/products', ProductController::class);
 
     // Riwayat transaksi
-    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
-    Route::get('/transactions/{id}', [TransactionController::class, 'show'])->name('transactions.show');
+    Route::get('/transactions', [TransactionController::class, 'index'])
+        ->name('transactions.index');
+
+    // ================= PRINT (HARUS PALING ATAS) =================
+    Route::get('/transactions/print', [TransactionController::class, 'print'])
+        ->name('transactions.print');
+
+    Route::get('/transactions/print-pdf', [TransactionController::class, 'printPdf'])
+        ->name('transactions.printPdf');
+
+    // ================= STATUS & PROSES =================
+    Route::get('/transactions/proses/{id}', [TransactionController::class, 'proses'])
+        ->name('transactions.proses');
+
+    Route::get('/transactions/terkirim/{id}', [TransactionController::class, 'terkirim'])
+        ->name('transactions.terkirim');
+
+    // ================= DETAIL & UPDATE =================
+    Route::get('/transactions/{id}/print', [TransactionController::class, 'printSingle'])
+        ->name('transactions.printSingle');
+
+    Route::put('/transactions/{id}/update-status', [TransactionController::class, 'updateStatus'])
+        ->name('transactions.updateStatus');
+
+    Route::get('/transactions/{id}', [TransactionController::class, 'show'])
+        ->name('transactions.show');
+
+
+
 
     // User
     Route::resource('/users', UserController::class)->except(['show']);

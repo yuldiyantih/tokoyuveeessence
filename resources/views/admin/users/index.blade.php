@@ -8,7 +8,8 @@
     {{ session('success') }}
 </div>
 @endif
-<div class="user-container">
+
+<div class="user-container page-user-index">
 
     <a href="{{ route('admin.users.create') }}" class="btn-tambah">+ Tambah</a>
 
@@ -50,7 +51,6 @@
                             @method('DELETE')
                             <button class="btn-delete">Hapus</button>
                         </form>
-
                     </td>
                 </tr>
                 @endforeach

@@ -15,7 +15,21 @@
     font-size: 18px;
 }
 
-/* Table reset (ANTI admin css) */
+/* Card Body */
+.rt-card-body {
+    padding: 0; /* tabel sudah punya padding sendiri */
+}
+
+/* Card Footer */
+.rt-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 14px;
+    background-color: #fff;
+}
+
+/* Table reset */
 .rt-table {
     width: 100% !important;
     border-collapse: collapse !important;
@@ -50,6 +64,8 @@
     padding: 5px 14px;
     border-radius: 20px;
     font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 /* Back button */
@@ -59,9 +75,27 @@
     padding: 7px 20px;
     border-radius: 5px;
     font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .rt-btn-back:hover {
     background-color: #bb2d3b;
+    color: #fff;
+}
+
+/* Cetak button */
+.rt-btn-print {
+    background-color: #007bff; /* warna biru */
+    color: #fff;
+    padding: 7px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.rt-btn-print:hover {
+    background-color: #0056b3;
     color: #fff;
 }

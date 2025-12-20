@@ -1,206 +1,219 @@
-/* ====== GLOBAL ====== */
-body {
-    font-family: "Inter", Arial, sans-serif;
-}
-
-/* ====== CONTAINER ====== */
+/* =========================================================
+   CSS GLOBAL (DIPAKAI SEMUA HALAMAN USER)
+   ========================================================= */
 .user-container {
-    padding: 30px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin: 20px auto;
 }
 
-/* ====== TITLE ====== */
-.title {
-    font-size: 26px;
-    font-weight: 600;
-    margin-bottom: 22px;
+.user-container .title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
     color: #333;
 }
 
-/* ===== TOMBOL TAMBAH ===== */
-.btn-tambah {
-    background: #f78eb6;
-    padding: 10px 22px;
-    border-radius: 10px;
-    color: white;
+.user-container .form-label {
+    display: block;
+    margin-bottom: 6px;
     font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 15px;
-    margin-bottom: 18px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-.btn-tambah:hover {
-    background: #f26ca5;
-}
-
-.icon-plus {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* ====== CARD ====== */
-.card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
-}
-
-/* ====== TABLE ====== */
-.table-user {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.table-user thead {
-    background: #fafafa;
-}
-
-.table-user th {
-    padding: 14px;
-    font-weight: 600;
-    color: #4a4a4a;
-    border-bottom: 1px solid #eee;
-}
-
-.table-user td {
-    padding: 14px;
-    border-top: 1px solid #eee;
+    font-size: 14px;
     color: #444;
-    font-size: 15px;
 }
 
-.table-user tr:hover {
-    background: #fff4f7; /* pink lembut */
-}
-
-/* ====== ROLE BADGES ====== */
-.role-superadmin {
-    background: #baf5c5;
-    color: #1b7b3a;
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.role-admin {
-    background: #d6cbff;
-    color: #4e36b3;
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-/* ====== ACTION BUTTON WRAPPER ====== */
-.status-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-/* ===== TOMBOL EDIT ===== */
-.btn-edit {
-    background: #63b2f9;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 500;
-}
-
-.btn-edit:hover {
-    background: #4d9de3;
-}
-
-.icon-edit {
-    font-size: 14px;
-}
-
-/* ===== TOMBOL HAPUS ===== */
-.btn-delete {
-    background: #ff6d6d;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.btn-delete:hover {
-    background: #e45656;
-}
-
-/*=======HALAMAN TAMBAH USERS=====*/
-/* Container keseluruhan */
-.form-container {
-    padding: 20px;
-}
-
-.form-title {
-    font-size: 26px;
-    font-weight: 600;
+.user-container .form-group {
     margin-bottom: 20px;
 }
 
-/* Card form */
-.form-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    width: 500px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-/* Label + input */
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    font-weight: 500;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.form-input {
+.user-container .form-input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 10px 12px;
     border-radius: 8px;
+    border: 1px solid #ccc;
     font-size: 14px;
+    transition: 0.2s;
 }
 
-/* Tombol Simpan */
-.btn-submit {
-    background: #ff7ab8;
-    padding: 10px 20px;
+.user-container .form-input:focus {
+    border-color: #ff7ca8;
+    box-shadow: 0 0 5px rgba(255, 124, 168, 0.4);
+    outline: none;
+}
+
+/* Flash Message */
+.alert-success {
+    background-color: #28a745;
     color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* =========================================================
+   CSS HALAMAN CREATE USER
+   class: page-user-create
+   ========================================================= */
+.page-user-create {
+    max-width: 600px;
+}
+
+.page-user-create .form-card {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-user-create .btn-submit {
+    background: #8b0e2f;
+    color: white;
+    padding: 12px 20px;
+    font-size: 15px;
     border-radius: 8px;
     border: none;
+    transition: 0.3s;
+    width: 80%;
     cursor: pointer;
-    transition: 0.2s;
+    font-weight: 600;
+    display: block;
+    margin: 0 auto;
+}
+
+.page-user-create .btn-submit:hover {
+    background: #5a0823;
+}
+
+/* =========================================================
+   CSS HALAMAN EDIT USER
+   class: page-user-edit
+   ========================================================= */
+.page-user-edit {
+    max-width: 600px;
+}
+
+.page-user-edit .form-card {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-user-edit .btn-submit {
+    background: #8b0e2f;
+    color: white;
+    padding: 12px 20px;
     font-size: 15px;
-}
-
-.btn-submit:hover {
-    background: #ff4c9d;
-}
-
-.alert-success {
-    background: #d4edda;
-    color: #155724;
-    padding: 12px 18px;
     border-radius: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #c3e6cb;
+    border: none;
+    transition: 0.3s;
+    width: 80%;
+    cursor: pointer;
+    font-weight: 600;
+    display: block;
+    margin: 0 auto;
+}
+
+.page-user-edit .btn-submit:hover {
+    background: #5a0823;
+}
+
+/* =========================================================
+   CSS HALAMAN INDEX USER
+   class: page-user-index
+   ========================================================= */
+.page-user-index {
+    max-width: 100%;
+}
+
+/* Tombol Tambah */
+.page-user-index .btn-tambah {
+    background: #5a0823;
+    padding: 10px 20px;
     font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.page-user-index .btn-tambah:hover {
+    background: #8b0e2f;
+}
+
+/* Tabel User */
+.page-user-index .table-user {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.page-user-index .table-user th,
+.page-user-index .table-user td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+/* Tombol Aksi */
+.page-user-index .status-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.page-user-index .btn-edit {
+    background: #4d79ff;
+    color: white;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.page-user-index .btn-edit:hover {
+    background: #6b94ff;
+}
+
+.page-user-index .btn-delete {
+    background: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.page-user-index .btn-delete:hover {
+    background: #ff6659;
+}
+
+/* Role Badge */
+.page-user-index .role-superadmin {
+    background-color: #d63031;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.page-user-index .role-admin {
+    background-color: #6c5ce7;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-align: center;
 }

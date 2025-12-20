@@ -7,10 +7,9 @@
 <div class="product-card">
 
     <!-- Header -->
-    <h2 class="page-title">Data Produk</h2>
+    <div class="product-header">
+        <h2 class="page-title">Data Produk</h2>
 
-    <!-- Tombol Tambah -->
-    <div class="add-btn-wrapper">
         <a href="{{ route('admin.products.create') }}" class="btn-tambah">
             + Tambah Produk
         </a>
