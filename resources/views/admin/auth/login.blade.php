@@ -13,6 +13,22 @@
             font-size: 13px;
             margin-top: 5px;
         }
+
+        .register-link {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .register-link a {
+            color: #4CAF50;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -34,40 +50,47 @@
         @endif
 
         <!-- Form Box -->
-        <form action="{{ route('login.process') }}"
-            method="POST"
-            class="login-box"
-            novalidate
-            onsubmit="return validateForm()">
+        <form action="{{ route('login.process') }}" method="POST">
             @csrf
+            <div class="login-box"
+                novalidate
+                onsubmit="return validateForm()">
+                @csrf
 
-            <!-- Email -->
-            <div class="input-group">
-                <span class="icon green">👤</span>
-                <input type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email">
-            </div>
-            <div id="emailError" class="error-text"></div>
+                <!-- Email -->
+                <div class="input-group">
+                    <span class="icon green">👤</span>
+                    <input type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email">
+                </div>
+                <div id="emailError" class="error-text"></div>
 
-            <!-- Password -->
-            <div class="input-group">
-                <span class="icon yellow">✏️</span>
-                <input type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Password">
-            </div>
-            <div id="passwordError" class="error-text"></div>
+                <!-- Password -->
+                <div class="input-group">
+                    <span class="icon yellow">✏️</span>
+                    <input type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password">
+                </div>
+                <div id="passwordError" class="error-text"></div>
 
-            <!-- Buttons -->
-            <div class="btn-row">
-                <a href="#" class="btn-forgot">🔒 Lost password?</a>
-                <button type="submit" class="btn-login">Login</button>
-            </div>
+                <!-- Buttons -->
+                <div class="btn-row">
+                    <a href="#" class="btn-forgot">🔒 Lost password?</a>
+                    <button type="submit" class="btn-login">Login</button>
+                </div>
 
         </form>
+
+        <!-- ✅ REGISTER LINK -->
+        <div class="register-link">
+            <p>Belum punya akun?
+                <a href="{{ route('customer.register') }}">Daftar di sini</a>
+            </p>
+        </div>
 
     </div>
 

@@ -1,0 +1,178 @@
+/* ===========================================================
+   STYLE HALAMAN CART
+   =========================================================== */
+.cart-section,
+.cart-page {
+    background: linear-gradient(180deg, #fbe7eb 0%, #fbd4da 40%, #f9c2ca 100%);
+    padding: 60px 80px;
+    border-radius: 20px;
+    margin: 30px auto;
+    width: 95%;
+    box-shadow: 0 8px 30px rgba(242, 128, 138, 0.25);
+    color: #780b0d;
+}
+
+/* Judul */
+.cart-page h2 {
+    text-align: center;
+    color: #9a0002;
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 35px;
+}
+
+/* ===========================================================
+   TABEL CART
+   =========================================================== */
+.cart-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff5f7;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.cart-table th {
+    background: #dd3a44;
+    color: #fff;
+    padding: 14px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.cart-table td {
+    padding: 14px;
+    border-bottom: 1px solid #f3c0c4;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #780b0d;
+}
+
+/* ===========================================================
+   GRID GAMBAR PRODUK
+   =========================================================== */
+.cart-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(242, 128, 138, 0.25);
+}
+
+/* ===========================================================
+   CHECKBOX
+   =========================================================== */
+.cart-table input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #dd3a44;
+    cursor: pointer;
+}
+
+/* ===========================================================
+   QUANTITY (+ / -)
+   =========================================================== */
+.qty-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #771023;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.qty-btn:hover {
+    background: #c95c69;
+}
+
+.qty-number {
+    min-width: 26px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ===========================================================
+   BUTTON STYLE
+   =========================================================== */
+.btn,
+.btn-update,
+.btn-hapus,
+.btn.checkout,
+.btn.lanjut {
+    display: inline-block;
+    background: linear-gradient(180deg, #771023 0%, #771023 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(242, 128, 138, 0.25);
+}
+
+.btn:hover,
+.btn-update:hover,
+.btn-hapus:hover,
+.btn.checkout:hover,
+.btn.lanjut:hover {
+    background: linear-gradient(180deg, #e97e8c 0%, #c95c69 100%);
+    transform: translateY(-2px);
+}
+
+/* ===========================================================
+   TOTAL
+   =========================================================== */
+.cart-total {
+    text-align: right;
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #780b0d;
+}
+
+.cart-total span {
+    color: #9a0002;
+}
+
+/* ===========================================================
+   POSISI TOMBOL (FIX UTAMA)
+   =========================================================== */
+.cart-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Checkout otomatis di bawah total */
+.cart-total + .cart-buttons {
+    margin-top: 25px;
+}
+
+/* ===========================================================
+   EMPTY CART
+   =========================================================== */
+.empty-cart {
+    text-align: center;
+    font-size: 16px;
+    color: #780b0d;
+    margin: 30px 0;
+}

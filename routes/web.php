@@ -2,119 +2,187 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Controllers
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\SettingProfileController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\FrontendProductController;
-use App\Http\Controllers\CheckoutController;
+/*
+|--------------------------------------------------------------------------
+| CONTROLLERS
+|--------------------------------------------------------------------------
+*/
+
+// Admin
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SettingProfileController;
+
+// Customer
+use App\Http\Controllers\Customer\AuthCustomerController;
+use App\Http\Controllers\Customer\ProfileCustomerController;
+use App\Http\Controllers\Customer\CartController;
+use App\Http\Controllers\Customer\CheckoutController;
+
+// Frontend
+use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\FrontendProductController;
+
+/*
+|--------------------------------------------------------------------------
+| HALAMAN UMUM / FRONTEND
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/', [PageController::class, 'home'])->name('home');
-
-// Tambahan URL /home (opsional)
 Route::get('/home', [PageController::class, 'home'])->name('home.redirect');
 
-// Halaman tentang
 Route::get('/tentang', [PageController::class, 'tentang'])->name('tentang');
-
-// Halaman kontak
 Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
-
-// Halaman about us
 Route::get('/aboutus', [PageController::class, 'aboutus'])->name('aboutus');
-
-// Halaman kebijakan-privasi
 Route::get('/kebijakan-privasi', [PageController::class, 'kebijakanPrivasi'])->name('kebijakan');
-
-// Halaman syarat-ketentuan
 Route::get('/syarat-ketentuan', [PageController::class, 'syaratKetentuan'])->name('syarat');
 
-// Checkout
-Route::get('/checkout/{id}', [CheckoutController::class, 'index'])->name('checkout.index');
-Route::post('/checkout/process/{id}', [CheckoutController::class, 'process'])->name('checkout.process');
 
 
-// ============= halaman produk frontend=============
-// Halaman daftar produk
+/*
+/*
+|--------------------------------------------------------------------------
+| PRODUK FRONTEND
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/produk', [FrontendProductController::class, 'index'])->name('produk.index');
-
-// Halaman detail produk
 Route::get('/produk/{id}', [FrontendProductController::class, 'show'])->name('produk.show');
+Route::get('/buy-now/{id}', [FrontendProductController::class, 'buyNow'])->name('buy.now');
 
 /*
 |--------------------------------------------------------------------------
-| LOGIN ADMIN (TANPA MIDDLEWARE)
+| AUTH ADMIN & CUSTOMER
 |--------------------------------------------------------------------------
 */
+Route::get('/login', [AuthCustomerController::class, 'login'])
+    ->name('login');
 
-Route::get('/login', [AdminController::class, 'login'])->name('login');
-Route::post('/login', [AdminController::class, 'authenticate'])->name('login.process');
+Route::post('/login', [AuthCustomerController::class, 'authenticate'])
+    ->name('login.process');
+
+Route::get('/register', [AuthCustomerController::class, 'showRegister'])
+    ->name('customer.register');
+
+Route::post('/register', [AuthCustomerController::class, 'register'])
+    ->name('customer.register.process');
 
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN AREA (HARUS LOGIN ADMIN) BACKEND
+| CUSTOMER AREA (LOGIN WAJIB)
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth'])->prefix('customer')->name('customer.')->group(function () {
 
-    // Dashboard 
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    // Account & Profile
+    Route::get('/account', [ProfileCustomerController::class, 'account'])
+        ->name('account');
 
-    // CRUD Produk
+    Route::get('/profile', [ProfileCustomerController::class, 'index'])
+        ->name('profile.index');
+
+    Route::post('/profile/store', [ProfileCustomerController::class, 'store'])
+        ->name('profile.store');
+
+    Route::post('/profile/update', [ProfileCustomerController::class, 'update'])
+        ->name('profile.update');
+
+    Route::delete('/profile/{id}', [ProfileCustomerController::class, 'destroy'])
+        ->name('profile.delete');
+
+    // 🔥 BUY NOW → langsung ke checkout
+    Route::post('/buy-now/{id}', [FrontendProductController::class, 'buyNow'])
+        ->name('buy.now');
+
+
+    // Cart
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+    //Route::post('/cart/buy/{id}', [CartController::class, 'buy'])->name('cart.buy');
+    Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+
+    // Checkout
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::get('/checkout/success', fn() => view('frontend.checkout.success'))
+        ->name('checkout.success');
+
+    // Logout customer
+    Route::post('/logout', [AuthCustomerController::class, 'logout'])
+        ->name('logout');
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN AREA (ADMIN & SUPER ADMIN)
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    // Produk
     Route::resource('/products', ProductController::class);
 
-    // Riwayat transaksi
-    Route::get('/transactions', [TransactionController::class, 'index'])
-        ->name('transactions.index');
+    // =====================
+    // TRANSACTIONS - CUSTOM ACTIONS
+    // =====================
 
-    // ================= PRINT (HARUS PALING ATAS) =================
+    // Print
     Route::get('/transactions/print', [TransactionController::class, 'print'])
         ->name('transactions.print');
 
     Route::get('/transactions/print-pdf', [TransactionController::class, 'printPdf'])
         ->name('transactions.printPdf');
 
-    // ================= STATUS & PROSES =================
+    // Status (button actions)
     Route::get('/transactions/proses/{id}', [TransactionController::class, 'proses'])
         ->name('transactions.proses');
 
     Route::get('/transactions/terkirim/{id}', [TransactionController::class, 'terkirim'])
         ->name('transactions.terkirim');
 
-    // ================= DETAIL & UPDATE =================
-    Route::get('/transactions/{id}/print', [TransactionController::class, 'printSingle'])
-        ->name('transactions.printSingle');
-
-    Route::put('/transactions/{id}/update-status', [TransactionController::class, 'updateStatus'])
+    // Update status (PUT)
+    Route::put('/transactions/update-status/{id}', [TransactionController::class, 'updateStatus'])
         ->name('transactions.updateStatus');
 
-    Route::get('/transactions/{id}', [TransactionController::class, 'show'])
-        ->name('transactions.show');
+    // Print single (PASTI DI BAWAH print)
+    Route::get('/transactions/print/{id}', [TransactionController::class, 'printSingle'])
+        ->name('transactions.printSingle');
+
+    // =====================
+    // TRANSACTIONS - RESOURCE (PALING BAWAH)
+    // =====================
+    Route::resource('/transactions', TransactionController::class)
+        ->except(['create', 'store']);
 
 
-
-
-    // User
+    // User (Super Admin)
     Route::resource('/users', UserController::class)->except(['show']);
 
-    // Lihat Profil Manager
-    Route::get('/profile', [SettingProfileController::class, 'show'])
-        ->name('profile.show');
-
-    // Edit Profil Manager
-    Route::get('/setting-profile', [SettingProfileController::class, 'index'])
+    // Profil admin
+    Route::get('/profile', [SettingProfileController::class, 'index'])
         ->name('profile.index');
 
-    // Update Profil Manager
-    Route::post('/setting-profile', [SettingProfileController::class, 'update'])
+    Route::post('/profile', [SettingProfileController::class, 'update'])
         ->name('profile.update');
 
+    Route::get('/profile/view', [SettingProfileController::class, 'show'])
+        ->name('profile.show');
 
-    // Logout
-    Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+    // Logout admin
+    Route::post('/logout', [AdminAuthController::class, 'logout'])
+        ->name('logout');
 });

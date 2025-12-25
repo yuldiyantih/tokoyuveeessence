@@ -9,12 +9,17 @@ class AdminMiddleware
 {
     public function handle($request, Closure $next)
     {
+        // Belum login → ke login admin
         if (!Auth::check()) {
-            return redirect('/login')->with('error', 'Silakan login dulu');
+            return redirect()
+                ->route('admin.login')
+                ->with('error', 'Silakan login sebagai admin');
         }
 
-        if (Auth::user()->role == 'customer') {
-            return redirect('/')->with('error', 'Tidak punya akses');
+        // Bukan admin / super admin → tolak
+        if (!in_array(Auth::user()->role, ['admin', 'super_admin'])) {
+            return redirect('/')
+                ->with('error', 'Tidak punya akses ke halaman admin');
         }
 
         return $next($request);

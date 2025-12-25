@@ -1,5 +1,5 @@
 /* =========================================
-   GENERAL STYLE
+   CHECKOUT PAGE - NAMESPACE
 ========================================= */
 .checkout-page {
     padding: 50px 0;
@@ -7,130 +7,175 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* Title */
 .checkout-page h2 {
     text-align: center;
     font-size: 32px;
     font-weight: 700;
-    color: #d6336c;
+    color: #5a0f1b; /* dark maroon */
     margin-bottom: 40px;
 }
 
 /* =========================================
-   CONTAINER UTAMA (GAMBAR KIRI, FORM KANAN)
+   CONTAINER UTAMA
 ========================================= */
-.checkout-container {
-    width: 80%;
+.checkout-page .checkout-container {
+    width: 85%;
     margin: auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
     background: #ffffff;
     padding: 35px;
     border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.15);
-    align-items: flex-start;
+    box-shadow: 0 5px 20px rgba(90, 15, 27, 0.15);
 }
 
 /* =========================================
-   PRODUK KIRI
+   CARD
 ========================================= */
-.checkout-product {
-    flex: 0.7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-right: 30px;
-    border-right: 2px solid #ffd2e8;
+.checkout-page .checkout-card {
+    background: #fff9fc;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 3px 12px rgba(90, 15, 27, 0.12);
 }
 
-/* Gambar produk kecil */
-.checkout-product img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.25);
-}
-
-/* Detail produk */
-.checkout-product h3 {
-    font-size: 22px;
-    font-weight: 600;
-    color: #d6336c;
-    margin-bottom: 10px;
-}
-
-.checkout-product p {
-    font-size: 16px;
-    color: #444;
-    margin: 4px 0;
-}
-
-.checkout-product .total {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #b32457;
+.checkout-page .checkout-card h4 {
+    font-size: 20px;
     font-weight: 700;
+    color: #5a0f1b; /* dark maroon */
+    margin-bottom: 20px;
 }
 
 /* =========================================
-   FORM KANAN
+   RINGKASAN PESANAN
 ========================================= */
-.checkout-form {
-    flex: 1.3;
+.checkout-page .order-item {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px dashed #d1a3a9;
 }
 
-.checkout-form label {
+.checkout-page .order-left p {
+    margin: 0;
     font-size: 15px;
     font-weight: 600;
-    color: #b32457;
-    margin-top: 12px;
+    color: #222; /* hitam */
 }
 
-.checkout-form input,
-.checkout-form textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border-radius: 12px;
-    border: 2px solid #ffc2dd;
-    background: #fff6fa;
+.checkout-page .order-left small {
+    font-size: 13px;
+    color: #555;
+}
+
+.checkout-page .order-right {
     font-size: 15px;
+    font-weight: 700;
+    color: #5a0f1b; /* dark maroon */
+    white-space: nowrap;
+}
+
+.checkout-page .order-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 700;
+    color: #5a0f1b; /* dark maroon */
+    margin-top: 20px;
+}
+
+/* =========================================
+   INFORMASI CUSTOMER
+========================================= */
+.checkout-page .info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 14px;
+}
+
+.checkout-page .info-row span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #5a0f1b; /* dark maroon */
+}
+
+.checkout-page .info-row strong {
+    font-size: 15px;
+    font-weight: 500;
+    color: #222; /* hitam */
+    line-height: 1.4;
+}
+
+/* =========================================
+   FORM PEMBAYARAN
+========================================= */
+.checkout-page form {
+    grid-column: span 2;
+    background: #fff9fc;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 3px 12px rgba(90, 15, 27, 0.12);
+}
+
+.checkout-page form label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5a0f1b; /* dark maroon */
+}
+
+.checkout-page form select,
+.checkout-page form input[type="file"] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 2px solid #d9a2ab;
+    background: #fff;
+    font-size: 14px;
     outline: none;
     transition: 0.2s;
 }
 
-.checkout-form input:focus,
-.checkout-form textarea:focus {
-    border-color: #ff73b3;
-    background: #fff;
-    box-shadow: 0 0 8px rgba(255, 105, 180, 0.3);
+.checkout-page form select:focus,
+.checkout-page form input[type="file"]:focus {
+    border-color: #c1121f;
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(193, 18, 31, 0.25);
 }
 
-.checkout-form textarea {
-    min-height: 120px;
-    resize: none;
+.checkout-page form small {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #555;
 }
 
-/* Tombol submit */
-.btn-submit {
-    margin-top: 25px;
+/* =========================================
+   BUTTON CHECKOUT (MERAH CERAH)
+========================================= */
+.checkout-page .btn-submit {
+    margin-top: 28px;
     padding: 14px;
-    background: linear-gradient(135deg, #ff78b8, #ff4f9a);
-    color: white;
+    width: 100%;
+    background: linear-gradient(135deg, #e63946, #c1121f);
+    color: #ffffff;
     border-radius: 14px;
     font-size: 17px;
     font-weight: 600;
     cursor: pointer;
     border: none;
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    box-shadow: 0 5px 15px rgba(193, 18, 31, 0.4);
     transition: 0.2s;
 }
 
-.btn-submit:hover {
-    background: linear-gradient(135deg, #ff4f9a, #e03174);
+.checkout-page .btn-submit:hover {
+    background: linear-gradient(135deg, #c1121f, #9b0d18);
     transform: translateY(-2px);
 }
 
@@ -138,21 +183,27 @@
    RESPONSIVE
 ========================================= */
 @media (max-width: 900px) {
-    .checkout-container {
-        flex-direction: column;
+    .checkout-page .checkout-container {
+        grid-template-columns: 1fr;
         padding: 25px;
     }
 
-    .checkout-product {
-        border-right: none;
-        border-bottom: 2px solid #ffd2e8;
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-        text-align: center;
+    .checkout-page form {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .checkout-page .checkout-container {
+        width: 95%;
+        padding: 18px;
     }
 
-    .checkout-product img {
-        width: 130px;
-        height: 130px;
+    .checkout-page h2 {
+        font-size: 26px;
+    }
+
+    .checkout-page .checkout-card h4 {
+        font-size: 18px;
     }
 }

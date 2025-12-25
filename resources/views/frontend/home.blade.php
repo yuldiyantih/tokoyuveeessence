@@ -23,7 +23,6 @@
     <h2>Our Bestsellers</h2>
 
     @php
-    // 3 gambar bestseller statis dari public/storage/products
     $bestsellerImages = [
     asset('storage/products/lipstikmerah1remove.png'),
     asset('storage/products/foundation.png'),
@@ -41,16 +40,18 @@
             <h3>{{ $product->name }}</h3>
             <p>★★★★★ <span>5.0</span></p>
 
-            <form action="{{ route('checkout.index', $product->id) }}" method="GET">
+            {{-- ✅ BUY NOW → jika belum login akan ke login, jika sudah login langsung checkout --}}
+            <form action="{{ route('customer.buy.now', $product->id) }}" method="POST">
+                @csrf
                 <input type="hidden" name="quantity" value="1">
-                <button type="submit" class="cart-btn">Buy Now</button>
+                <button type="submit" class="btn-buy-now">Buy Now</button>
             </form>
+
 
         </div>
         @endforeach
     </div>
 </section>
-
 
 {{-- ESSENCE HIGHLIGHT --}}
 <section class="essence-highlight">

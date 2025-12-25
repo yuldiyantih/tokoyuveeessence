@@ -1,0 +1,255 @@
+/* =================================================
+   PROFILE & ACCOUNT - YUVEE ESSENCE
+   FINAL (SAFE & IDENTIFIED)
+   ================================================= */
+
+/* =================================================
+   SHARED CONTAINER
+   Dipakai oleh:
+   - account.blade.php
+   - profile.blade.php
+   ================================================= */
+.profile-container {
+    max-width: 720px;
+    margin: 30px auto 50px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: 0 6px 18px rgba(138, 32, 32, 0.15);
+}
+
+/* =================================================
+   ================= PROFILE FORM PAGE ==============
+   File   : profile.blade.php
+   Wrapper: .page-profile-form
+   ================================================= */
+.page-profile-form h2 {
+    font-size: 20px;
+    color: #8b1e1e;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.page-profile-form h3 {
+    font-size: 16px;
+    color: #8b1e1e;
+    margin: 22px 0 12px;
+}
+
+/* Form group */
+.page-profile-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.page-profile-form label {
+    font-size: 13px;
+    color: #5a2b2b;
+    margin-bottom: 4px;
+}
+
+.page-profile-form input,
+.page-profile-form textarea,
+.page-profile-form select {
+    padding: 8px 10px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid #f1b5c1;
+    outline: none;
+}
+
+.page-profile-form textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+.page-profile-form input:focus,
+.page-profile-form textarea:focus,
+.page-profile-form select:focus {
+    border-color: #8b1e1e;
+}
+
+/* Row alamat */
+.page-profile-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+/* HR */
+.page-profile-form hr {
+    border: none;
+    height: 1px;
+    background: #f1b5c1;
+    margin: 18px 0;
+}
+
+/* =================================================
+   ================= ACCOUNT STATUS PAGE ============
+   File   : account.blade.php
+   Wrapper: .page-account
+   ================================================= */
+.page-account h2 {
+    font-size: 20px;
+    color: #8b1e1e;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+/* Status box */
+.page-account .status-box {
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.page-account .status-box.success {
+    background: #eaf7ee;
+    color: #2f7a45;
+}
+
+.page-account .status-box.warning {
+    background: #fdecec;
+    color: #8b1e1e;
+}
+
+/* List multi profile */
+.page-account .profile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Card profil */
+.page-account .profile-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 14px rgba(138, 32, 32, 0.12);
+}
+
+/* Item data akun */
+.page-account .account-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.page-account .account-item span {
+    font-size: 12px;
+    color: #888;
+}
+
+.page-account .account-item strong {
+    font-size: 14px;
+    color: #4a1c1c;
+    line-height: 1.5;
+}
+
+/* =================================================
+   ================= BUTTON AREA ====================
+   Dipakai bersama (account & profile)
+   ================================================= */
+
+/* Area tombol sejajar */
+.card-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+/* Simpan */
+.btn-save {
+    background: #8b1e1e;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background: #a62b38;
+}
+
+/* Tambah Profil */
+.btn-add-profile {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 6px;
+    background: #8b1e1e;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.btn-add-profile:hover {
+    background: #a62b38;
+    text-decoration: none;
+}
+
+/* Edit */
+.btn-edit {
+    background: #2d6cdf;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    background: #1f56b8;
+}
+
+/* Delete */
+.btn-delete {
+    background: #999;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* =================================================
+   ALERT
+   ================================================= */
+.alert-success {
+    background: #f9c5d1;
+    color: #4a1c1c;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+/* =================================================
+   RESPONSIVE
+   ================================================= */
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 20px 16px 40px;
+        padding: 20px;
+    }
+
+    .page-profile-form .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .card-action {
+        flex-wrap: wrap;
+    }
+}

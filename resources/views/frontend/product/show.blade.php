@@ -19,20 +19,35 @@
             <p class="price">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
             <p class="netto">Netto: <span>{{ $product->netto ?? '14 gram' }}</span></p>
 
-            {{-- FORM BUY NOW --}}
-            <form action="{{ route('checkout.index', $product->id) }}" method="GET">
+            {{-- Qty --}}
+            <div class="qty">
+                <button type="button" class="minus">-</button>
+                <input type="number" name="quantity" value="1" min="1" class="input-qty">
+                <button type="button" class="plus">+</button>
+            </div>
 
-                <label>Jumlah:</label>
-                <div class="qty">
-                    <button type="button" class="minus">-</button>
-                    <input type="number" name="quantity" value="1" min="1" class="input-qty">
-                    <button type="button" class="plus">+</button>
-                </div>
+            {{-- Tombol Aksi --}}
+            <div class="action-buttons">
 
-                <button type="submit" class="btn-buy">
-                    Buy Now
-                </button>
-            </form>
+                {{-- ✅ BUY NOW → langsung ke checkout --}}
+                <form action="{{ route('customer.buy.now', $product->id) }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="btn-buy-now">Buy Now</button>
+                </form>
+
+
+                {{-- ✅ ADD TO CART --}}
+                <form action="{{ route('customer.cart.add', $product->id) }}" method="POST" class="form-add-to-cart">
+                    @csrf
+                    <input type="hidden" name="quantity" value="1" class="qty-hidden cart-qty-hidden">
+                    <button type="submit" class="btn-add-to-cart">
+                        Add to Cart
+                    </button>
+                </form>
+
+            </div>
+
 
             {{-- Deskripsi produk --}}
             <div class="desc">
@@ -59,16 +74,29 @@
         const plusBtn = document.querySelector('.plus');
         const qtyInput = document.querySelector('.input-qty');
 
-        minusBtn.addEventListener('click', function() {
-            let value = parseInt(qtyInput.value);
-            if (value > 1) qtyInput.value = value - 1;
+        const buyQtyHidden = document.querySelector('.buy-qty-hidden');
+        const cartQtyHidden = document.querySelector('.cart-qty-hidden');
+
+        function syncQty() {
+            const val = Math.max(parseInt(qtyInput.value), 1);
+            qtyInput.value = val;
+            buyQtyHidden.value = val;
+            cartQtyHidden.value = val;
+        }
+
+        minusBtn.addEventListener('click', () => {
+            qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1);
+            syncQty();
         });
 
-        plusBtn.addEventListener('click', function() {
-            let value = parseInt(qtyInput.value);
-            qtyInput.value = value + 1;
+        plusBtn.addEventListener('click', () => {
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+            syncQty();
         });
+
+        qtyInput.addEventListener('input', syncQty);
     });
 </script>
+
 
 @endsection
